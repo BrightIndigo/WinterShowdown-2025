@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,15 +13,38 @@
 
     <script>
       function dodaj() {
-        window.location.replace("http://localhost/kod/Event/admin/dodaj.php");
-        //window.location.replace("https://5muza.waw.pl/admin/dodaj.php");
+        if (
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1"
+        ) {
+          window.location.replace("http://localhost/kod/Event/admin/dodaj.php");
+        } else {
+          window.location.replace("https://5muza.waw.pl/admin/dodaj.php");
+        }
       }
 
-      function edytuj() {}
+      function edytuj() {
+        if (
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1"
+        ) {
+          window.location.replace(
+            "http://localhost/kod/Event/admin/edytuj.php"
+          );
+        } else {
+          window.location.replace("https://5muza.waw.pl/admin/edytuj.php");
+        }
+      }
 
       function usun() {
-        window.location.replace("http://localhost/kod/Event/admin/usun.php");
-        //window.location.replace("https://5muza.waw.pl/admin/usun.php");
+        if (
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1"
+        ) {
+          window.location.replace("http://localhost/kod/Event/admin/usun.php");
+        } else {
+          window.location.replace("https://5muza.waw.pl/admin/usun.php");
+        }
       }
     </script>
   </body>

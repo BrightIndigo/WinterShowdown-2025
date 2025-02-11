@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuń</title>
+    <script src="usun.js" defer></script>
 </head>
 <body>
 <button onclick="admin()">Powrót do menu</button>
@@ -114,30 +115,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
   .large-box .content .duze {
     margin: 0;
     padding: 1vh;
-    font-size: 1.5vw;
+    font-size: 5vw;
     background-color: #740c7e;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .large-box .content .b {
     margin: 0;
     padding: 0;
-    font-size: 2.5vw;
+    font-size: clamp(0.5vw, 10vw, 20vw);
     text-wrap: wrap;
   }
 
   .large-box .content .autor {
     margin: 0;
     padding: 0;
-    font-size: 1.1vw;
+    font-size: 3vw;
   }
 
   .large-box .content .d {
     padding: 2vh;
-    font-size: 1.2vw;
+    font-size: 6vw;
     background-color: #740c7e;
     border: none;
     color: white;
@@ -149,44 +151,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
   .large-box .content button {
     margin-bottom: 10%;
   }
-
-  .small-container {
-    flex: 2; /* Smaller boxes fit into the remaining space */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    grid-gap: 1rem; /* Space between smaller boxes */
-  }
-
-  .small-box {
-    background-color: #dbdada;
-    height: 18rem;
-  }
-
-  .small-box .content {
-    height: 100%;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding-left: 10%;
-    color: white;
-    text-wrap: wrap;
-  }
-
-  .small-box .content .duze {
-    text-wrap: wrap;
-    font-size: 150%;
-    margin-bottom: 4%;
-  }
-
-  .small-box .content .autor {
-    margin: 0;
-    padding: 0;
-    font-size: 80%;
-    margin-bottom: 10%;
-  }
-
         </style>
 <script>
       function admin() {
