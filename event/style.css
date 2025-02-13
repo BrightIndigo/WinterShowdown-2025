@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  background: rgb(243, 243, 243);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column; /* Ustawienie w kolumnie */
+  align-items: center; /* Wyśrodkowanie elementów */
+}
+
+input[type="text"],
+input[type="password"],
+button {
+  width: 90%; /* Ustaw szerokość na 90% */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"],
+.login-button {
+  background-color: #e42a2a; /* Kolor zielony */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover,
+.login-button:hover {
+  background-color: #ff0000; /* Ciemniejszy zielony przy najechaniu */
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  color: #e42a2a;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* Odstępy między kafelkami */
+  margin-top: 20px;
+}
+
+.tile {
+  background-color: #007bff; /* Kolor kafelków */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  transition: transform 0.3s; /* Animacja przy najechaniu */
+}
+
+.tile:hover {
+  transform: scale(1.05); /* Powiększenie kafelka przy najechaniu */
+}
+
+.baner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
