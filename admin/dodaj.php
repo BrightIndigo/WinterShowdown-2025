@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logowanie</title>
+    <script src="powrot.js"></script>
   </head>
   <body>
   <button onclick="admin()">Powrót do menu</button>
@@ -17,6 +18,8 @@
 
       // Handle file uploads
       $upload_dir = '../images/';
+
+      
       $zdj_glowne = $upload_dir . basename($_FILES['zdj_glowne']['name']);
       $zdj_t1 = $upload_dir . basename($_FILES['zdj_t1']['name']);
       $zdj_t2 = $upload_dir . basename($_FILES['zdj_t2']['name']);
@@ -24,7 +27,7 @@
       move_uploaded_file($_FILES['zdj_glowne']['tmp_name'], $zdj_glowne);
       move_uploaded_file($_FILES['zdj_t1']['tmp_name'], $zdj_t1);
       move_uploaded_file($_FILES['zdj_t2']['tmp_name'], $zdj_t2);
-
+      
       $sql = "INSERT INTO artykul1 (id, zdj_m, tytul, autor, podtytul, data, zdj1, tekst1, zdj2, tekst2, podsumowanie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);
       $sql2 = "SELECT MAX(id) FROM artykul1";
@@ -123,12 +126,5 @@
       <br /><br />
       <input type="submit" value="Wyślij artykuł" name="submit" />
     </form>
-
-    <script>
-      function admin() {
-        window.location.replace("http://localhost/kod/Event/admin/admin.php");
-        //window.location.replace("https://5muza.waw.pl/admin/dodaj.php");
-      }
-    </script>
   </body>
 </html>

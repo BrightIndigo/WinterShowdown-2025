@@ -26,8 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuń</title>
-    <script src="usun.js" defer></script>
-</head>
+    <script src="powrot.js"></script>
+    <link rel="stylesheet" href="artykuly.css">
+</head> 
 <body>
 <button onclick="admin()">Powrót do menu</button>
     <h1>Wybierz artykuł do usunięcia:</h1>
@@ -49,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
                 
                 if ($articles->num_rows > 0) {
                     while ($article = $articles->fetch_assoc()) {
-                        echo "<div class='large-box' style='background-image: url(../images/". htmlspecialchars($article["zdj_m"]) .")'>";
+                        echo "<div class='large-box' style='background-image: url(". htmlspecialchars($article["zdj_m"]) .")'>";
                         echo "<div class='content'>";
                         echo "<div class='duze'>News</div>";
                         echo "<p class='b'>".htmlspecialchars($article["tytul"])."</p>";
@@ -72,93 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
         $conn->close();
         ?>
     </div>
-    <style>
-              .container {
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(300px, 1fr)
-    ); /* Adjust columns based on available space */
-    gap: 1rem; /* Space between items */
-    align-items: stretch;
-    height: 100%; /* Adjust height as needed */
-    margin-left: 10vw;
-    margin-right: 10vw;
-  }
-
-  .large-box,
-  .small-box {
-    background-size: cover; /* Ensure the image covers the entire container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    color: white;
-  }
-
-  .large-box {
-    background-color: #5d1464;
-    height: 300px; /* Adjust as needed */
-  }
-
-  .large-box .content {
-    height: 80%;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding-left: 10%;
-    color: rgb(255, 255, 255);
-    text-shadow: #000000 1px 1px 2px;
-    gap: 3%;
-  }
-
-  .large-box .content .duze {
-    margin: 0;
-    padding: 1vh;
-    font-size: 5vw;
-    background-color: #740c7e;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  .large-box .content .b {
-    margin: 0;
-    padding: 0;
-    font-size: clamp(0.5vw, 10vw, 20vw);
-    text-wrap: wrap;
-  }
-
-  .large-box .content .autor {
-    margin: 0;
-    padding: 0;
-    font-size: 3vw;
-  }
-
-  .large-box .content .d {
-    padding: 2vh;
-    font-size: 6vw;
-    background-color: #740c7e;
-    border: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .large-box .content button {
-    margin-bottom: 10%;
-  }
-        </style>
-<script>
-      function admin() {
-        window.location.replace("http://localhost/kod/Event/admin/admin.php");
-        //window.location.replace("https://5muza.waw.pl/admin/dodaj.php");
-      }
-    </script>
-
 </body>
 </html>
 
