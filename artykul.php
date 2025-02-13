@@ -58,11 +58,11 @@
             echo "<div class='content'>";
             echo "<div class='tresc'>";
             echo "<div class='box'>";
-            echo "<img src='".htmlspecialchars($article["zdj1"])."' />";
+            echo "<img src='".htmlspecialchars(substr($article["zdj1"], 3))."' />";
             echo "<p>".htmlspecialchars($article["tekst1"])."</p>";
             echo "</div>";
             echo "<div class='box'>";
-            echo "<img src='".htmlspecialchars($article["zdj2"])."' />";
+            echo "<img src='".htmlspecialchars(substr($article["zdj2"], 3))."' />";
             echo "<p>".htmlspecialchars($article["tekst2"])."</p>";
             echo "</div>";
             echo "</div>";

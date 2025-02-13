@@ -126,7 +126,7 @@
             if ($count > 0) {
                 // Iteracja po artykułach i wyświetlanie
                 while ($article = $articles->fetch_assoc()) {
-                  echo "<div class='large-box' style='background-image: url(". htmlspecialchars($article["zdj_m"]) .")'>";
+                  echo "<div class='large-box' style='background-image: url(". htmlspecialchars(substr($article["zdj_m"], 3)) .")'>";
                   echo "<div class='content'>";
                   echo "<div class='duze'>News</div>";
                   echo "<p class='b'>".htmlspecialchars($article["tytul"])."</p>";
