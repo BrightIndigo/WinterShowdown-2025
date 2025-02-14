@@ -56,7 +56,7 @@ $conn = null;
       </div>
       <div class="box">
       <p>Data wysłania artykułu:</p>
-      <input type="date" id="godzina" name="godzina" value="<?php echo htmlspecialchars($article['godzina']); ?>" required/>
+      <input type="date" id="godzina" name="godzina" value="<?php echo htmlspecialchars($article['data']); ?>" required/>
       </div>
       <div class="box">
       <p>Dodaj zdjęcie do pierwszej części tekstu artykułu:</p>
@@ -64,7 +64,7 @@ $conn = null;
       </div>
       <div class="box">
       <p>Dodaj pierwszą część tekstu artykułu:</p>
-      <textarea rows="8" cols="50" id="tekst_a1" name="tekst_a1" value="<?php echo htmlspecialchars($article['tekst_a1']); ?>" required></textarea>
+      <textarea rows="8" cols="50" id="tekst_a1" name="tekst_a1" required><?php echo htmlspecialchars($article['tekst1']); ?></textarea>
       </div>
       <div class="box">
       <p>Dodaj zdjęcie do drugiej części tekstu artykułu:</p>
@@ -72,11 +72,11 @@ $conn = null;
       </div>
       <div class="box">
       <p>Dodaj drugą część tekstu artykułu:</p>
-      <textarea rows="8" cols="50" id="tekst_a2" name="tekst_a2" value="<?php echo htmlspecialchars($article['tekst_a2']); ?>" required></textarea>
+      <textarea rows="8" cols="50" id="tekst_a2" name="tekst_a2" required><?php echo htmlspecialchars($article['tekst2']); ?></textarea>
       </div>
       <div class="box">
       <p>Dodaj podsumowanie:</p>
-      <textarea rows="8" cols="50" id="podsumowanie" name="podsumowanie" value="<?php echo htmlspecialchars($article['podsumowanie']); ?>" required></textarea>
+      <textarea rows="8" cols="50" id="podsumowanie" name="podsumowanie" required><?php echo htmlspecialchars($article['podsumowanie']); ?></textarea>
       </div>
       <div class="box">
       <p>Dodaj autora/ów tekstu:</p>
