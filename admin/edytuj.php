@@ -13,40 +13,48 @@
 <div class='container'>
     <?php
     session_start();
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "artykuly";
-    try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM artykul1");
-    $stmt->execute();
+    if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '::1') {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $db = "artykuly";
+    } else {
+        $servername = "localhost";
+        $username = "ah5muzaw737";
+        $password = "N7d@-*32y-7CHV-NbbR";
+        $db = "ah5muzaw737_";
+    }
+    
+    
+    // Połączenie z bazą danych
+    $conn = new mysqli($servername, $username, $password, $db);
+    
+    // Sprawdzenie połączenia
+    if ($conn->connect_error) {
+        die("Błąd połączenia: " . $conn->connect_error);
+    }
 
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (count($result) > 0) {
-        foreach ($result as $row) {
-            echo "<div class='large-box' style='background-image: url(". htmlspecialchars($row["zdj_m"]) .")'>";
+    $sql = "SELECT * FROM artykul1";
+    $result = $conn->query($sql);
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='large-box' style='background-image: url(../". htmlspecialchars(substr($row["zdj_m"], 3)) .")'>";
             echo "<div class='content'>";
             echo "<div class='duze'>News</div>";
             echo "<p class='b'>".htmlspecialchars($row["tytul"])."</p>";
             echo "<p class='autor'>" . htmlspecialchars($row["autor"]) . "</p>";
-            echo "<form method='POST' action='edytuj_input.php'>";
-            echo "<input type='hidden' name='article_id' value='". htmlspecialchars($row["id"]) ."'>";
+            echo "<form action='edytuj_input.php' method='POST'>";
+            echo "<input type='hidden' name='article_id' value='". intval(htmlspecialchars($row["id"])) ."'>";
             echo "<button type='submit' class='d'>Edytuj</button>";
             echo "</form>";
             echo "</div>";
             echo "</div>";
+        }
     }
-}
-    
+    $result -> free_result();
+    $conn->close();
 
-    } catch(PDOException $e) {
-        echo "Connection failed" . $e->getMessage(); 
-    }
-    $conn = null;
     ?>
-    </div>
+</div>
 </body>
 </html>

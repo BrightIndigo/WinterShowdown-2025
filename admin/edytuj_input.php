@@ -4,87 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edytuj</title>
-    <script src="powrot.js"></script>
+    <script src="edytuj.js"></script>
 </head>
 <body>
-<button onclick="admin()">Powrót do menu</button>
-<?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "artykuly";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db;charset=utf8", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Sprawdzenie, czy przesłano ID artykułu
-    if (isset($_POST['article_id']) && is_numeric($_POST['article_id'])) {
-        $id = (int)$_POST['article_id'];
-
-        // Pobranie artykułu o podanym ID
-        $stmt = $conn->prepare("SELECT * FROM artykul1 WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $article = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$article) {
-            die("Nie znaleziono artykułu!");
-        }
+<button onclick="edytuj()">Powrót do menu edycji</button>
+    <?php 
+    $id = intval($_POST["article_id"]);
+    
+    if ($_SERVER['REMOTE_ADDR'] == '::1') {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $db = "artykuly";
     } else {
-        die("Nieprawidłowe ID artykułu!");
+        $servername = "localhost";
+        $username = "ah5muzaw737";
+        $password = "N7d@-*32y-7CHV-NbbR";
+        $db = "ah5muzaw737_";
     }
-} catch (PDOException $e) {
-    die("Błąd połączenia: " . $e->getMessage());
+    $conn = new mysqli($servername, $username, $password, $db);
+
+    if($conn->connect_error) {
+        die("Błąd połączenia: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM `artykul1` WHERE id=$id";
+    $result = $conn->query($sql);
+    if ($result){
+    while($row = $result->fetch_assoc()) {
+        echo "id: ".$row['id'].", zdj_m: ".$row['zdj_m'].", tytul: ".$row['tytul'].", autor: ".$row['autor'].", podtytul: ".$row['podtytul'].", data: ".$row['data'].", zdj1: ".$row['zdj1'].", tekst1: ".$row['tekst1'].", zdj2: ".$row['zdj2'].", tekst2: ".$row['tekst2'].", podsumowanie: ".$row['podsumowanie'];
+    
+        echo "<form method='POST' enctype='multipart/form-data'>";
+        echo "<div class='box'>";
+        echo "<p>Dodaj zdjęcie artykułu ukazujące się na stronie głównej:</p>";
+        echo "<input type='file' name='zdj_glowne' id='zdj_glowne' />";
+        echo "</div>";
+        echo "<div class='box'>";
+        echo "<p>Dodaj tytuł artykułu:</p>";
+        echo "<input type='text' id='tytul' name='tytul' value=". $row['tytul'] ." required/>";
+        echo "</div>";
+        echo "<div class='box'>";
+        echo "<p>Dodaj podtytuł artykułu:</p>";
+        echo "<input type='text' id='podtytul' name='podtytul' value=". $row['podtytul'] ." required/>"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Data wysłania artykułu:</p>"; 
+        echo "<input type='date' id='godzina' name='godzina' value=". $row['data'] ." required/>"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Dodaj zdjęcie do pierwszej części tekstu artykułu:</p>"; 
+        echo "<input type='file' name='zdj_t1' id='zdj_t1' />"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Dodaj pierwszą część tekstu artykułu:</p>"; 
+        echo "<textarea rows='8' cols='50' id='tekst_a1' name='tekst_a1' required>".$row['tekst1']."</textarea>"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Dodaj zdjęcie do drugiej części tekstu artykułu:</p>"; 
+        echo "<input type='file' name='zdj_t2' id='zdj_t2' />"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Dodaj drugą część tekstu artykułu:</p>"; 
+        echo "<textarea rows='8' cols='50' id='tekst_a2' name='tekst_a2' required>".$row['tekst2']."</textarea>"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Dodaj podsumowanie:</p>"; 
+        echo "<textarea rows='8' cols='50' id='podsumowanie' name='podsumowanie' required>".$row['podsumowanie']."</textarea>"; 
+        echo "</div>";
+        echo "<div class='box'>"; 
+        echo "<p>Dodaj autora/ów tekstu:</p>"; 
+        echo "<input type='text' id='autor' name='autor' value=".$row['autor']." required/>"; 
+        echo "</div>";
+        echo "<br /><br />"; 
+        echo "<input type='submit' value='Wyślij artykuł' name='submit' />"; 
+        echo "</form>";
+    }
 }
 
-$conn = null;
-?>
-<form method="POST" enctype="multipart/form-data">
-      <div class="box">
-      <p>Dodaj zdjęcie artykułu ukazujące się na stronie głównej:</p>
-      <input type="file" name="zdj_glowne" id="zdj_glowne"/>
-      </div>
-      <div class="box">
-      <p>Dodaj tytuł artykułu:</p>
-      <input type="text" id="tytul" name="tytul" value="<?php echo htmlspecialchars($article['tytul']); ?>" required/>
-      </div>
-      <div class="box">
-      <p>Dodaj podtytuł artykułu:</p>
-      <input type="text" id="podtytul" name="podtytul" value="<?php echo htmlspecialchars($article['podtytul']); ?>" required/>
-      </div>
-      <div class="box">
-      <p>Data wysłania artykułu:</p>
-      <input type="date" id="godzina" name="godzina" value="<?php echo htmlspecialchars($article['data']); ?>" required/>
-      </div>
-      <div class="box">
-      <p>Dodaj zdjęcie do pierwszej części tekstu artykułu:</p>
-      <input type="file" name="zdj_t1" id="zdj_t1" />
-      </div>
-      <div class="box">
-      <p>Dodaj pierwszą część tekstu artykułu:</p>
-      <textarea rows="8" cols="50" id="tekst_a1" name="tekst_a1" required><?php echo htmlspecialchars($article['tekst1']); ?></textarea>
-      </div>
-      <div class="box">
-      <p>Dodaj zdjęcie do drugiej części tekstu artykułu:</p>
-      <input type="file" name="zdj_t2" id="zdj_t2" />
-      </div>
-      <div class="box">
-      <p>Dodaj drugą część tekstu artykułu:</p>
-      <textarea rows="8" cols="50" id="tekst_a2" name="tekst_a2" required><?php echo htmlspecialchars($article['tekst2']); ?></textarea>
-      </div>
-      <div class="box">
-      <p>Dodaj podsumowanie:</p>
-      <textarea rows="8" cols="50" id="podsumowanie" name="podsumowanie" required><?php echo htmlspecialchars($article['podsumowanie']); ?></textarea>
-      </div>
-      <div class="box">
-      <p>Dodaj autora/ów tekstu:</p>
-      <input type="text" id="autor" name="autor" value="<?php echo htmlspecialchars($article['autor']); ?>" required/>
-      </div>
-      <br /><br />
-      <input type="submit" value="Wyślij artykuł" name="submit" />
-    </form>    
+
+    ?>
 </body>
 </html>
-
