@@ -108,15 +108,16 @@
       </div>
       <div class='container'>
       <?php 
-
-        // Połączenie z bazą danych
-        //$conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_'); 
-        $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
+        if ($_SERVER['REMOTE_ADDR'] == '::1') {
+          $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
+        } else {
+          $conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_'); 
+        }
+        
         if ($conn->connect_error) {
             die('Błąd połączenia: ' . $conn->connect_error);
         }
 
-        // Zapytanie, aby pobrać artykuły z tabeli artykul1
         $sql = "SELECT * FROM artykul1";
         if ($stmt = $conn->prepare($sql)) {
             $stmt->execute();
@@ -124,7 +125,6 @@
             $count = $articles->num_rows;
 
             if ($count > 0) {
-                // Iteracja po artykułach i wyświetlanie
                 while ($article = $articles->fetch_assoc()) {
                   echo "<div class='large-box' style='background-image: url(". htmlspecialchars(substr($article["zdj_m"], 3)) .")'>";
                   echo "<div class='content'>";

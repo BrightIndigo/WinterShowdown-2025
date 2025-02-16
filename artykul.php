@@ -31,14 +31,16 @@
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['article_id'])) {
     $article_id = intval($_POST['article_id']);
 
-    // Połączenie z bazą danych
-    //$conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_'); 
-    $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
+    if ($_SERVER['REMOTE_ADDR'] == '::1') {
+      $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
+    } else {
+      $conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_'); 
+    }
+    
     if ($conn->connect_error) {
         die('Błąd połączenia: ' . $conn->connect_error);
     }
 
-    // Zapytanie, aby pobrać szczegóły artykułu
     $sql = "SELECT * FROM artykul1 WHERE id = ?";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("i", $article_id);
@@ -47,13 +49,12 @@
 
         if ($result->num_rows > 0) {
             $article = $result->fetch_assoc();
-            // Wyświetlanie szczegółów artykułu
             echo "<div class='tytol'>";
             echo"<h1>".htmlspecialchars($article["tytul"])."</h1>";
             echo "</div>";
             echo "<div class='podtytol'>";
             echo "<h2>".htmlspecialchars($article["podtytul"])."</h2>";
-            echo "<p>".htmlspecialchars($article["data"])."</p>";
+            echo "<p>".htmlspecialchars($article["czas"])."</p>";
             echo "</div>";
             echo "<div class='content'>";
             echo "<div class='tresc'>";
