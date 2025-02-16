@@ -33,7 +33,7 @@
     if ($conn->connect_error) {
         die("Błąd połączenia: " . $conn->connect_error);
     }
-
+    
     $sql = "SELECT * FROM artykul1";
     $result = $conn->query($sql);
     if ($result) {

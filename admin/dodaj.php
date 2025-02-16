@@ -10,8 +10,19 @@
   <button onclick="admin()">Powrót do menu</button>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-      //$conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_'); 
-      $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
+      if ($_SERVER['REMOTE_ADDR'] == '::1') {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $db = "artykuly";
+    } else {
+        $servername = "localhost";
+        $username = "ah5muzaw737";
+        $password = "N7d@-*32y-7CHV-NbbR";
+        $db = "ah5muzaw737_";
+    }
+      $conn = new mysqli($servername, $username, $password, $db); 
+      
       if ($conn->connect_error) {
           die("Błąd połączenia: " . $conn->connect_error);
       }
@@ -28,7 +39,7 @@
       move_uploaded_file($_FILES['zdj_t1']['tmp_name'], $zdj_t1);
       move_uploaded_file($_FILES['zdj_t2']['tmp_name'], $zdj_t2);
       
-      $sql = "INSERT INTO artykul1 (id, zdj_m, tytul, autor, podtytul, data, zdj1, tekst1, zdj2, tekst2, podsumowanie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO artykul1 (id, zdj_m, tytul, autor, podtytul, czas, zdj1, tekst1, zdj2, tekst2, podsumowanie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);
       $sql2 = "SELECT MAX(id) FROM artykul1";
       if ($id = mysqli_query($conn, $sql2)) {
@@ -44,7 +55,7 @@
               $_POST['tytul'],
               $_POST['podtytul'],
               $_POST['autor'],
-              $_POST['godzina'],
+              $_POST['czas'],
               $zdj_t1,
               $_POST['tekst_a1'],
               $zdj_t2,
@@ -97,7 +108,7 @@
       </div>
       <div class="box">
       <p>Data wysłania artykułu:</p>
-      <input type="date" id="godzina" name="godzina" required/>
+      <input type="date" id="czas" name="czas" required/>
       </div>
       <div class="box">
       <p>Dodaj zdjęcie do pierwszej części tekstu artykułu:</p>

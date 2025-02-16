@@ -1,6 +1,19 @@
 <?php
 // Połączenie z bazą danych
-$conn = new mysqli('localhost', 'root', '', 'artykuly');
+if ($_SERVER['REMOTE_ADDR'] == '::1') {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $db = "artykuly";
+} else {
+    $servername = "localhost";
+    $username = "ah5muzaw737";
+    $password = "N7d@-*32y-7CHV-NbbR";
+    $db = "ah5muzaw737_";
+}
+
+  $conn = new mysqli($servername, $username, $password, $db); 
+
 if ($conn->connect_error) {
     die('Błąd połączenia: ' . $conn->connect_error);
 }
@@ -27,11 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuń</title>
     <script src="powrot.js"></script>
-    <link rel="stylesheet" href="artykuly.css">
+    
+    <link rel="stylesheet" href="artykuly.css"> 
+
 </head> 
 <body>
 <button onclick="admin()">Powrót do menu</button>
     <h1>Wybierz artykuł do usunięcia:</h1>
+    <div id="page">
     <div class='container'>
         <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['article_id']) && !isset($_POST['confirm_delete'])) {
@@ -72,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
         }
         $conn->close();
         ?>
+    </div>
     </div>
 </body>
 </html>
