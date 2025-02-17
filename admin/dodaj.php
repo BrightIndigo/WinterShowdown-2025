@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logowanie</title>
-    <script src="powrot.js"></script>
+    <script src="./scripts/powrot.js"></script>
+    <link rel="stylesheet" href="./style/dodaj.css">
+    <script src="./scripts/dodaj.js"></script>
   </head>
-  <body>
-  <button onclick="admin()">Powrót do menu</button>
+  <body onload="info()">
+    <div id="page">
+  <button onclick="admin()" class="btn">Powrót do menu</button>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
       if ($_SERVER['REMOTE_ADDR'] == '::1') {
@@ -77,34 +80,18 @@
       $conn->close();
   }
     ?>
-    <style>
-      form, body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
-      .box {
-        background-color:darkgray;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        border-radius: 1rem;
-      }
-    </style>
     <form action="dodaj.php" method="POST" enctype="multipart/form-data">
       <div class="box">
       <p>Dodaj zdjęcie artykułu ukazujące się na stronie głównej:</p>
-      <input type="file" name="zdj_glowne" id="zdj_glowne" />
+      <input type="file" name="zdj_glowne" id="zdj_glowne"/>
       </div>
       <div class="box">
       <p>Dodaj tytuł artykułu:</p>
-      <input type="text" id="tytul" name="tytul" required/>
+      <input type="text" id="tytul" name="tytul" class="s_input" required/>
       </div>
       <div class="box">
       <p>Dodaj podtytuł artykułu:</p>
-      <input type="text" id="podtytul" name="podtytul" required/>
+      <input type="text" id="podtytul" name="podtytul" class="s_input" required/>
       </div>
       <div class="box">
       <p>Data wysłania artykułu:</p>
@@ -116,7 +103,7 @@
       </div>
       <div class="box">
       <p>Dodaj pierwszą część tekstu artykułu:</p>
-      <textarea rows="8" cols="50" id="tekst_a1" name="tekst_a1" required></textarea>
+      <textarea id="tekst_a1" name="tekst_a1" required></textarea>
       </div>
       <div class="box">
       <p>Dodaj zdjęcie do drugiej części tekstu artykułu:</p>
@@ -124,18 +111,18 @@
       </div>
       <div class="box">
       <p>Dodaj drugą część tekstu artykułu:</p>
-      <textarea rows="8" cols="50" id="tekst_a2" name="tekst_a2" required></textarea>
+      <textarea id="tekst_a2" name="tekst_a2" required></textarea>
       </div>
       <div class="box">
       <p>Dodaj podsumowanie:</p>
-      <textarea rows="8" cols="50" id="podsumowanie" name="podsumowanie" required></textarea>
+      <textarea id="podsumowanie" name="podsumowanie" required></textarea>
       </div>
       <div class="box">
       <p>Dodaj autora/ów tekstu:</p>
-      <input type="text" id="autor" name="autor" required/>
+      <input type="text" id="autor" name="autor" class="s_input" required/>
       </div>
-      <br /><br />
-      <input type="submit" value="Wyślij artykuł" name="submit" />
+      <input type="submit" value="Wyślij artykuł" name="submit" class="btn"/>
     </form>
+    </div>
   </body>
 </html>

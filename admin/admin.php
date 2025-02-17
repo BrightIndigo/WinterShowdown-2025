@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="./style/admin.css">
   </head>
   <body>
-    <h1>Wybierz operację:</h1>
-    <button onclick="dodaj()">Dodaj artykuł</button>
-    <button onclick="edytuj()">Edytuj artykuł</button>
-    <button onclick="usun()">Usuń artykuł</button>
-
+    <div id="page">
+    <h1 class="ope">Wybierz operację:</h1>
+    <button onclick="dodaj()" class="btn">Dodaj artykuł</button>
+    <button onclick="edytuj()" class="btn">Edytuj artykuł</button>
+    <button onclick="usun()" class="btn">Usuń artykuł</button>
+    </div>
     <script>
       function dodaj() {
         if (

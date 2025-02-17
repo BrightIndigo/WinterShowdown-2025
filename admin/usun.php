@@ -39,15 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuń</title>
-    <script src="powrot.js"></script>
-    
-    <link rel="stylesheet" href="artykuly.css"> 
+    <script src="./scripts/powrot.js"></script>
+    <link rel="stylesheet" href="./style/artykuly.css"> 
 
 </head> 
 <body>
-<button onclick="admin()">Powrót do menu</button>
-    <h1>Wybierz artykuł do usunięcia:</h1>
+    
     <div id="page">
+    <div class="box1">
+    <button onclick="admin()" class="exit">Powrót do menu</button>
+    <h1 class="option">Wybierz artykuł do usunięcia:</h1>
+    </div>
     <div class='container'>
         <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['article_id']) && !isset($_POST['confirm_delete'])) {

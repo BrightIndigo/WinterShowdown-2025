@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edytuj</title>
-    <script src="edytuj.js"></script>
-
-    <link rel="stylesheet" href="edytuj_input.css">
+    <script src="./scripts/edytuj.js"></script>
+    <link rel="stylesheet" href="./style/edytuj_input.css">
 </head>
 <body>
-<button onclick="edytuj()">Powrót do menu edycji</button>
+    <div id="page">
+<button onclick="edytuj()" class="btn">Powrót do menu edycji</button>
     <?php 
     $id = intval($_POST["article_id"] ?? 0);
     
@@ -131,11 +131,11 @@
         echo "</div>";
         echo "<div class='box'>";
         echo "<p>Dodaj tytuł artykułu:</p>";
-        echo "<input type='text' id='tytul' name='tytul' value='". htmlspecialchars($row['tytul'], ENT_QUOTES)."' required/>";
+        echo "<input type='text' class='s_input' id='tytul' name='tytul' value='". htmlspecialchars($row['tytul'], ENT_QUOTES)."' required/>";
         echo "</div>";
         echo "<div class='box'>";
         echo "<p>Dodaj podtytuł artykułu:</p>";
-        echo "<input type='text' id='podtytul' name='podtytul' value='". htmlspecialchars($row['podtytul'], ENT_QUOTES) ."' required/>"; 
+        echo "<input type='text' class='s_input' id='podtytul' name='podtytul' value='". htmlspecialchars($row['podtytul'], ENT_QUOTES) ."' required/>"; 
         echo "</div>";
         echo "<div class='box'>"; 
         echo "<p>Data wysłania artykułu:</p>"; 
@@ -171,16 +171,17 @@
         echo "</div>";
         echo "<div class='box'>"; 
         echo "<p>Dodaj autora/ów tekstu:</p>"; 
-        echo "<input type='text' id='autor' name='autor' value='".htmlspecialchars($row['autor'], ENT_QUOTES)."' required/>"; 
+        echo "<input type='text' class='s_input' id='autor' name='autor' value='".htmlspecialchars($row['autor'], ENT_QUOTES)."' required/>"; 
         echo "</div>";
         echo "<br /><br />"; 
         echo "<input type='hidden' name='id' value='". htmlspecialchars($row["id"]) ."'>";
-        echo "<input type='submit' value='Wyślij artykuł' name='submit' />"; 
+        echo "<input type='submit' value='Wyślij artykuł' name='submit' class='btn'/>"; 
         echo "</form>";
     }
 }
     
 
     ?>
+    </div>
 </body>
 </html>

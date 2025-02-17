@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edytuj</title>
-    <link rel="stylesheet" href="artykuly.css">
-    <script src="powrot.js"></script>
+    <link rel="stylesheet" href="./style/artykuly.css">
+    <script src="./scripts/powrot.js"></script>
 </head>
 <body>
-<button onclick="admin()">Powrót do menu</button>
-<h1>Wybierz artykuł do edycji:</h1>
+    <div id="page">
+        <div class="box1">
+<button onclick="admin()" class="exit">Powrót do menu</button>
+<h1 class="option">Wybierz artykuł do edycji:</h1>
+</div>
 <div class='container'>
     <?php
     session_start();
@@ -55,6 +58,7 @@
     $conn->close();
 
     ?>
+</div>
 </div>
 </body>
 </html>
