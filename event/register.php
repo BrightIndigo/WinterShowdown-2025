@@ -6,10 +6,10 @@ if (isset($_SESSION['username'])) {
 }
 
 
-$host = 'localhost';
-$db_username = 'ah5muzaw737';
-$db_password = 'N7d@-*32y-7CHV-NbbR';
-$db_name = 'ah5muzaw737_';
+$host = 'SERVER';
+$db_username = 'SERVER';
+$db_password = 'SERVER';
+$db_name = 'SERVER';
 
 $conn = new mysqli($host, $db_username, $db_password, $db_name);
 //$conn = new mysqli('localhost', 'root', '', 'users');
