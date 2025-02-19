@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_');
+    $conn = new mysqli('SERVER', 'SERVER', 'SERVER', 'SERVER');
     //$conn = new mysqli('localhost', 'root', '', 'users');
 
     if ($conn->connect_error) {
