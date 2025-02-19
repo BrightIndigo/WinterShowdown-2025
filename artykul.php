@@ -34,7 +34,7 @@
     if ($_SERVER['REMOTE_ADDR'] == '::1') {
       $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
     } else {
-      $conn = new mysqli('localhost', 'ah5muzaw737', 'N7d@-*32y-7CHV-NbbR', 'ah5muzaw737_'); 
+      $conn = new mysqli('SERVER', 'SERVER', 'SERVER', 'SERVER'); 
     }
     
     if ($conn->connect_error) {
