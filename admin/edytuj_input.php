@@ -21,10 +21,10 @@
             $password = "";
             $db = "artykuly";
         } else {
-            $servername = "localhost";
-            $username = "ah5muzaw737";
-            $password = "N7d@-*32y-7CHV-NbbR";
-            $db = "ah5muzaw737_";
+            $servername = "SERVER";
+            $username = "SERVER";
+            $password = "SERVER";
+            $db = "SERVER";
         }
         $conn = new mysqli($servername, $username, $password, $db);
     
