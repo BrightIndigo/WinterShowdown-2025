@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+  $cookie_name = "User";
+  $cookie_value = "Cookie";
+  setcookie($cookie_name, $cookie_value, time() + (300), "/");
+      
+?>
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
@@ -15,11 +21,32 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+            <?php
+            if(!isset($_COOKIE[$cookie_name])) {
+            ?>
+              <div id="communicate">
+              <div class="cnt">
+                
+                <h1>Drogi użytkowniku!</h1>
+                <p>Strona w budowie 🚧</p>
+                <p>
+                  Dziękujemy za odwiedzenie naszej strony! Obecnie jest ona w trakcie
+                  tworzenia, a wszystkie widoczne elementy są jedynie placeholderami.
+                  Pracujemy nad pełną wersją, która wkrótce będzie dostępna.
+                </p>
+                <p>Zapraszamy wkrótce! 😊</p>
+                <button onclick="closeComm()" class="closeBtn">Chcę zobaczyć projekt!</button>
+              </div>
+            </div>
+            <?php
+            }
+            ?>
+
     <div id="page">
       <div id="media">
-        <a href="link1.html"><img src="./images/icon1.png" alt="Icon 1" /></a>
+        <a href="https://www.facebook.com/profile.php?id=61571712183895"><img src="./images/icon1.png" alt="Icon 1" /></a>
         <a href="link2.html"><img src="./images/icon2.png" alt="Icon 2" /></a>
-        <a href="link3.html"><img src="./images/icon3.png" alt="Icon 3" /></a>
+        <a href="https://discord.gg/3w6U9hZMe4"><img src="./images/icon3.png" alt="Icon 3"/></a>
         <a href="link4.html" id="last_icon"
           ><img src="./images/icon4.png" alt="Icon 4"
         /></a>
@@ -73,7 +100,8 @@
               Za niespełna miesiąc Augustów stanie się<br />
               centrum różnorodnych form rozrywki!
             </p>
-            <button class="btn" onclick="goToEvent()">Więcej</button>
+            <button class="btn" onclick="goToEvent()" id="spin_d">Więcej</button>
+            <button id="spin">Więcej</button>
           </div>
 
         <div class="sep2"></div>
@@ -108,10 +136,12 @@
       </div>
       <div class='container'>
       <?php 
+      require './admin/config.php';
+      
         if ($_SERVER['REMOTE_ADDR'] == '::1') {
           $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
         } else {
-          $conn = new mysqli('SERVER', 'SERVER', 'SERVER', 'SERVER'); 
+          $conn = new mysqli($p_servername, $p_username, $p_password, $p_db); 
         }
         
         if ($conn->connect_error) {
@@ -154,5 +184,6 @@
         <button id="autor_strony">Autor strony</button>
       </div>
     </div>
+    
   </body>
 </html>

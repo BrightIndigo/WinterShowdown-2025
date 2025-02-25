@@ -15,17 +15,27 @@ document.addEventListener("click", (e) => {
 });
 
 function goToEvent() {
-  window.location.href = "../event/event.php";
+  setTimeout(() => {
+    let disappear = document.querySelector("#spin_d");
+    let appear = document.querySelector("#spin");
+    disappear.style.display = "none";
+    appear.style.display = "flex";
+  }, "300");
+
+  setTimeout(() => {
+    window.location.href = "./event/event.php";
+  }, "1000");
 }
 
 function duzy_news() {
   window.location.href = "../artykuly/d_news.html";
 }
 
-function m_news1() {}
-
-function m_news2() {}
-
-function m_news3() {}
-
-function m_news4() {}
+document.addEventListener("DOMContentLoaded", function () {
+  window.closeComm = function () {
+    let comm = document.getElementById("communicate");
+    if (comm) {
+      comm.style.display = "none";
+    }
+  };
+});

@@ -21,20 +21,21 @@
   <body>
   <div class="page">
       <div id="media">
-      <a href="link1.html"><img src="./images/icon1.png" alt="Icon 1" /></a>
+      <a href="https://www.facebook.com/profile.php?id=61571712183895"><img src="./images/icon1.png" alt="Icon 1" /></a>
         <a href="link2.html"><img src="./images/icon2.png" alt="Icon 2" /></a>
-        <a href="link3.html"><img src="./images/icon3.png" alt="Icon 3" /></a>
+        <a href="https://discord.gg/3w6U9hZMe4"><img src="./images/icon3.png" alt="Icon 3" /></a>
         <a href="link4.html"><img src="./images/icon4.png" alt="Icon 4" /></a>
       </div>
     <?php
-  session_start();
+      session_start();
+    require "./admin/config.php";
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['article_id'])) {
     $article_id = intval($_POST['article_id']);
 
     if ($_SERVER['REMOTE_ADDR'] == '::1') {
       $conn = new mysqli('localhost', 'root', '', 'artykuly'); 
     } else {
-      $conn = new mysqli('SERVER', 'SERVER', 'SERVER', 'SERVER'); 
+      $conn = new mysqli($p_servername, $p_username, $p_password, $p_db); 
     }
     
     if ($conn->connect_error) {

@@ -112,6 +112,35 @@ body {
   font-weight: 800;
   cursor: pointer;
 }
+#spin {
+  text-align: center;
+  height: auto;
+  border: 2px solid #5d1464;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #5d1464;
+  margin-top: 2vh;
+  margin-bottom: 1.2vh;
+  font-family: "Roboto", serif;
+  font-weight: 800;
+  font-style: oblique;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  animation-name: anima;
+  transition: 0.3s ease-in-out;
+  animation-duration: 1s;
+}
+@keyframes anima {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    background-color: #6f0083;
+  }
+}
 .sep {
   height: 0.3vh;
   width: 8vh;
@@ -468,4 +497,80 @@ body {
   font-style: italic;
   height: fit-content;
   width: 25vw;
+}
+#communicate {
+  position: absolute;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgb(38, 36, 36);
+  height: 400%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5vh;
+  font-size: 1.2rem;
+}
+
+#communicate .cnt {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10vh;
+  padding: 2vh;
+  width: 70%;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#communicate .cnt h1 {
+  margin-top: 0;
+}
+
+@keyframes bg-change {
+  0% {
+    background-color: white;
+  }
+  25% {
+    background-color: rgb(205, 160, 210);
+  }
+  50% {
+    background-color: rgb(154, 76, 183);
+  }
+  75% {
+    background-color: rgb(225, 0, 255);
+  }
+  100% {
+    background-color: rgb(205, 160, 210);
+  }
+}
+
+.cnt .closeBtn {
+  padding: 2vh 3vh;
+  border-radius: 2rem;
+  border: 3px solid rgb(58, 58, 58);
+  font-family: inherit;
+  font-size: 1.2rem;
+  transition: ease transform 0.3s;
+  animation-name: bg-change;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.cnt .closeBtn:hover {
+  cursor: pointer;
+  background-color: white;
+  transform: scale(1.2);
 }
