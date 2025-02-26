@@ -19,9 +19,9 @@ session_start();
   <body>
     <div class="page">
       <div id="media">
-        <a href="link1.html"><img src="../images/icon1.png" alt="Icon 1" /></a>
+        <a href="https://www.facebook.com/profile.php?id=61571712183895"><img src="../images/icon1.png" alt="Icon 1" /></a>
         <a href="link2.html"><img src="../images/icon2.png" alt="Icon 2" /></a>
-        <a href="link3.html"><img src="../images/icon3.png" alt="Icon 3" /></a>
+        <a href="https://discord.gg/3w6U9hZMe4"><img src="../images/icon3.png" alt="Icon 3" /></a>
         <a href="link4.html"><img src="../images/icon4.png" alt="Icon 4" /></a>
       </div>
       <div class="segment1">
@@ -50,6 +50,16 @@ session_start();
           <?php endif; ?>
         
         <div class="h-sep"></div>
+      </div>
+      <div class="info_event">
+        <div class="adress">
+          <div class="address_icon"></div>
+          <p>Nadrzeczna 147, Augustów</p>
+        </div>
+        <div class="email">
+          <div class="email_icon"></div>
+          <p>aug.wintershowdown@gmail.com</p>
+        </div>
       </div>
       <div class="naglowek">
         <h1 id="zmien">W dniach od 30 stycznia do 2 lutego 2025 roku Augustów...</h1> 

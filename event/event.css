@@ -78,6 +78,19 @@ body {
 .btn:hover {
   transform: scale(1.1);
 }
+.info_event {
+  margin-left: 4vw;
+  margin-right: 4vw;
+  font-family: inherit;
+  background-color: aqua;
+  width: 82vw;
+  padding: 4vw;
+  margin-top: 4vh;
+}
+.info_event .address_icon {
+}
+.info_event .email_icon {
+}
 .naglowek {
   display: flex;
   flex-direction: column;

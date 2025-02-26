@@ -104,7 +104,7 @@ określonego terminu zgłoszenia.
         
         @media (min-width: 800px) {
             #container {
-                border-radius: 5% 5%;
+                border-radius: 4rem;
             }
         }
     </style>
