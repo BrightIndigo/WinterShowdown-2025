@@ -52,8 +52,8 @@ session_start();
         <div class="h-sep"></div>
       </div>
       <div class="info_event">
-        <div class="adress">
-          <div class="address_icon"></div>
+        <div class="address">
+          <div class="address_icon"></div> 
           <p>Nadrzeczna 147, Augustów</p>
         </div>
         <div class="email">

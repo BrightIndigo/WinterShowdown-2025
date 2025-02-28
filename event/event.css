@@ -79,17 +79,40 @@ body {
   transform: scale(1.1);
 }
 .info_event {
-  margin-left: 4vw;
-  margin-right: 4vw;
   font-family: inherit;
-  background-color: aqua;
-  width: 82vw;
-  padding: 4vw;
-  margin-top: 4vh;
+  min-width: fit-content;
+  padding-top: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2vw;
 }
-.info_event .address_icon {
+.info_event .address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2vw;
 }
-.info_event .email_icon {
+.address_icon {
+  width: 4vw;
+  height: 4vw;
+  background-image: url("../images/marker.png");
+  background-size: cover;
+}
+.info_event .email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2vw;
+}
+.email_icon {
+  width: 4vw;
+  height: 4vw;
+  background-image: url("../images/envelope.png");
+  background-size: cover;
 }
 .naglowek {
   display: flex;
