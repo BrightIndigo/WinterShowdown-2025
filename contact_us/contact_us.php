@@ -12,13 +12,15 @@
     />
     <link rel="stylesheet" href="contact_us.css" />
     <script src="./contact_us.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <div id="page">
       <div id="media">
-        <a href="link1.html"><img src="../images/icon1.png" alt="Icon 1" /></a>
+        <a href="https://www.facebook.com/profile.php?id=61571712183895"><img src="../images/icon1.png" alt="Icon 1" /></a>
         <a href="link2.html"><img src="../images/icon2.png" alt="Icon 2" /></a>
-        <a href="link3.html"><img src="../images/icon3.png" alt="Icon 3" /></a>
+        <a href="https://discord.gg/3w6U9hZMe4"><img src="../images/icon3.png" alt="Icon 3" /></a>
         <a href="link4.html" id="last_icon"
           ><img src="../images/icon4.png" alt="Icon 4" />
         </a>
@@ -43,7 +45,7 @@
         </div>
       </div>
 
-        <img id="magnifier" src="./images/icon5.png" />
+        <img id="magnifier" src="../images/icon5.png" />
       </div>
       <div class="segment2">
         <div class="box1">
@@ -76,6 +78,31 @@
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
+      </div>
+      <div class="segment3">
+        <h1>Lub skontatuj się z nami przez formularz:</h1>
+        <form>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Adres email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Nie udostępnimy twojego adresu e-mail nikomu innemu.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Pytanie</label>
+            <input type="text" class="form-control" id="exampleInputPassword1">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Wiadomość</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Wyślij</button>
+
+          <div id="emailHelp2" class="form-text">Skontaktujemy się z tobą tak szybko jak to możliwe!</div>
+        </form>
       </div>
     </div>
   </body>
