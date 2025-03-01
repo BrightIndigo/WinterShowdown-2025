@@ -81,28 +81,63 @@
       </div>
       <div class="segment3">
         <h1>Lub skontatuj się z nami przez formularz:</h1>
-        <form>
+        <form method="post" action="contact_us.php">
 
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Adres email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             <div id="emailHelp" class="form-text">Nie udostępnimy twojego adresu e-mail nikomu innemu.</div>
           </div>
 
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Pytanie</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
+            <input name="pytanie" type="text" class="form-control" id="exampleInputPassword1" required>
           </div>
 
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Wiadomość</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="wiadomosc" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
           </div>
           
           <button type="submit" class="btn btn-primary">Wyślij</button>
 
           <div id="emailHelp2" class="form-text">Skontaktujemy się z tobą tak szybko jak to możliwe!</div>
         </form>
+        <?php
+        require '../admin/config.php';
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
+          $local = array(
+            '127.0.0.1',
+            '::1'
+          );
+          
+          if(!in_array($_SERVER['REMOTE_ADDR'], $local)){
+            $conn = new mysqli($p_servername, $p_username, $p_password, $p_db); 
+          } else {
+            $conn = new mysqli('localhost', 'root', '', 'artykuly');
+          }
+          if ($conn -> connect_errno) {
+            echo "Failed to connect to MySQL: " . $conn -> connect_error;
+            exit();
+          }
+
+          $email = $_POST['email'];
+          $pytanie = $_POST['pytanie'];
+          $wiadomosc = $_POST['wiadomosc'];
+
+          $sql = "INSERT INTO contact (email, pytanie, wiadomosc) VALUES ('$email', '$pytanie', '$wiadomosc')";
+          
+          if ($conn->query($sql) == TRUE) {
+            echo "Wysłano wiadomość!";
+          } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+
+          $conn->close();
+        }
+
+        ?>
       </div>
     </div>
   </body>
