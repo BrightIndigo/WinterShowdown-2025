@@ -50,3 +50,8 @@ textarea {
   width: 100%;
   height: 30vw;
 }
+
+.img_preview {
+  height: auto;
+  width: 20vw;
+}

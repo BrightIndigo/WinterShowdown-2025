@@ -1,0 +1,38 @@
+#page {
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.box p {
+  margin-top: 0;
+}
+.btn {
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+  border: 2px groove rgb(255, 9, 9);
+  cursor: pointer;
+  font-family: inherit;
+}
+#table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4vw;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 800px) {
+  #table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 4vw;
+  }
+}
