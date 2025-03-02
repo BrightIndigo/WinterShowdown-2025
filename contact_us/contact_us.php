@@ -99,7 +99,7 @@
             <textarea name="wiadomosc" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
           </div>
           
-          <button type="submit" class="btn btn-primary">Wyślij</button>
+          <button type="submit" class="btn btn-primary" name="submit">Wyślij</button>
 
           <div id="emailHelp2" class="form-text">Skontaktujemy się z tobą tak szybko jak to możliwe!</div>
         </form>
@@ -122,18 +122,20 @@
             exit();
           }
 
+          $stmt = $conn->prepare("INSERT INTO contact (email, pytanie, wiadomosc) VALUES (?, ?, ?)");
+          $stmt->bind_param("sss", $email, $pytanie, $wiadomosc);
+          
           $email = $_POST['email'];
           $pytanie = $_POST['pytanie'];
           $wiadomosc = $_POST['wiadomosc'];
-
-          $sql = "INSERT INTO contact (email, pytanie, wiadomosc) VALUES ('$email', '$pytanie', '$wiadomosc')";
           
-          if ($conn->query($sql) == TRUE) {
-            echo "Wysłano wiadomość!";
+          if ($stmt->execute()) {
+            echo "Wysłano wiadomość";
           } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Błąd przy wysyłaniu wiadomości";
           }
 
+          $stmt->close();
           $conn->close();
         }
 

@@ -90,7 +90,6 @@ body {
 
 #baner {
   height: 7rem;
-  margin-right: 3vh;
 }
 .navbar {
   background-color: transparent;
@@ -99,6 +98,9 @@ body {
   align-items: center;
   justify-content: space-evenly; /* Center the menu */
   width: 80%;
+}
+.menu {
+  margin-right: 0;
 }
 .segment1 #magnifier {
   height: 0rem;
@@ -167,11 +169,11 @@ body {
   text-wrap: wrap;
 }
 .segment3 {
-  width: 90vw;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
   color: rgb(49, 48, 48);
-  padding: 4vh 0vh;
+  padding: 4vh 4vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -203,6 +205,10 @@ body {
   }
   #page {
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .menu {
     list-style-type: none;
@@ -362,5 +368,8 @@ body {
     width: 90vw;
     text-align: center;
     text-wrap: wrap;
+  }
+  .segment3 {
+    width: 90vw;
   }
 }
