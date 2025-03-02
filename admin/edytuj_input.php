@@ -11,6 +11,8 @@
     <div id="page">
 <button onclick="edytuj()" class="btn">Powrót do menu edycji</button>
     <?php 
+    require 'config.php';
+
     $id = intval($_POST["article_id"] ?? 0);
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,10 +23,10 @@
             $password = "";
             $db = "artykuly";
         } else {
-            $servername = "SERVER";
-            $username = "SERVER";
-            $password = "SERVER";
-            $db = "SERVER";
+            $servername = $p_servername;
+            $username = $p_username;
+            $password = $p_password;
+            $db = $p_db;
         }
         $conn = new mysqli($servername, $username, $password, $db);
     

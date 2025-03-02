@@ -1,4 +1,5 @@
 <?php
+require 'config.php';
 // Połączenie z bazą danych
 if ($_SERVER['REMOTE_ADDR'] == '::1') {
     $servername = "localhost";
@@ -6,10 +7,10 @@ if ($_SERVER['REMOTE_ADDR'] == '::1') {
     $password = "";
     $db = "artykuly";
 } else {
-    $servername = "SERVER";
-    $username = "SERVER";
-    $password = "SERVER";
-    $db = "SERVER";
+    $servername = $p_servername;
+    $username = $p_username;
+    $password = $p_password;
+    $db = $p_db;
 }
 
   $conn = new mysqli($servername, $username, $password, $db); 

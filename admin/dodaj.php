@@ -12,6 +12,8 @@
     <div id="page">
   <button onclick="admin()" class="btn">Powrót do menu</button>
     <?php
+    require 'config.php';
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
       if ($_SERVER['REMOTE_ADDR'] == '::1') {
         $servername = "localhost";
@@ -19,10 +21,10 @@
         $password = "";
         $db = "artykuly";
     } else {
-        $servername = "SERVER";
-        $username = "SERVER";
-        $password = "SERVER";
-        $db = "SERVER";
+        $servername = $p_servername;
+        $username = $p_username;
+        $password = $p_password;
+        $db = $p_db;
     }
       $conn = new mysqli($servername, $username, $password, $db); 
       
@@ -83,7 +85,8 @@
     <form action="dodaj.php" method="POST" enctype="multipart/form-data">
       <div class="box">
       <p>Dodaj zdjęcie artykułu ukazujące się na stronie głównej:</p>
-      <input type="file" name="zdj_glowne" id="zdj_glowne"/>
+      <img src="" id="img_g" class="img_preview"> 
+      <input type="file" name="zdj_glowne" id="zdj_glowne" onchange="change_img('zdj_glowne', 'img_g')"/> 
       </div>
       <div class="box">
       <p>Dodaj tytuł artykułu:</p>
@@ -99,7 +102,8 @@
       </div>
       <div class="box">
       <p>Dodaj zdjęcie do pierwszej części tekstu artykułu:</p>
-      <input type="file" name="zdj_t1" id="zdj_t1" />
+      <img src="" id="img_t1" class="img_preview" >
+      <input type="file" name="zdj_t1" id="zdj_t1" onchange="change_img('zdj_t1', 'img_t1')"/>
       </div>
       <div class="box">
       <p>Dodaj pierwszą część tekstu artykułu:</p>
@@ -107,7 +111,8 @@
       </div>
       <div class="box">
       <p>Dodaj zdjęcie do drugiej części tekstu artykułu:</p>
-      <input type="file" name="zdj_t2" id="zdj_t2" />
+      <img src="" id="img_t2" class="img_preview">
+      <input type="file" name="zdj_t2" id="zdj_t2" onchange="change_img('zdj_t2', 'img_t2')"/>
       </div>
       <div class="box">
       <p>Dodaj drugą część tekstu artykułu:</p>

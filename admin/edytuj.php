@@ -15,6 +15,8 @@
 </div>
 <div class='container'>
     <?php
+    require 'config.php';
+    
     session_start();
     if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '::1') {
         $servername = "localhost";
@@ -22,10 +24,10 @@
         $password = "";
         $db = "artykuly";
     } else {
-        $servername = "SERVER";
-        $username = "SERVER";
-        $password = "SERVER";
-        $db = "SERVER";
+        $servername = $p_servername;
+        $username = $p_username;
+        $password = $p_password;
+        $db = $p_db;
     }
     
     
