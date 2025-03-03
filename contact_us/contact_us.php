@@ -130,7 +130,14 @@
           $wiadomosc = $_POST['wiadomosc'];
           
           if ($stmt->execute()) {
-            echo "Wysłano wiadomość";
+            ?>
+          <div id="wiadomosc">
+            <div class="row">
+            <p>Wysłano wiadomość!</p>
+            <img src="../images/cross.png" alt="cross" onclick="closeMessage()">  
+          </div>
+          </div>
+            <?php
           } else {
             echo "Błąd przy wysyłaniu wiadomości";
           }
