@@ -13,3 +13,8 @@ document.addEventListener("click", (e) => {
     dropdown.classList.remove("active");
   });
 });
+
+function closeMessage() {
+  let wiadomosc = document.getElementById("wiadomosc");
+  wiadomosc.style.display = "none";
+}
