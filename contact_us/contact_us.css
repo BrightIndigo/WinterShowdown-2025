@@ -186,7 +186,38 @@ body {
 .segment3 h1 {
   margin-bottom: 4vh;
 }
-
+#wiadomosc {
+  position: absolute;
+  top: 5vh;
+  width: 100vw;
+  height: 300vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.27);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  z-index: 1000;
+  font-size: 4rem;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.row img {
+  width: 8rem;
+  height: auto;
+  transition: ease-in-out 0.5s;
+}
+.row img:hover {
+  transform: rotate(180deg);
+}
 @media (min-width: 880px) {
   html,
   body {
@@ -371,5 +402,8 @@ body {
   }
   .segment3 {
     width: 90vw;
+  }
+  #wiadomosc {
+    height: 160vh;
   }
 }
