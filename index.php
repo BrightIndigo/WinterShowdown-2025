@@ -156,17 +156,19 @@
 
             if ($count > 0) {
                 while ($article = $articles->fetch_assoc()) {
-                  echo "<div class='large-box' style='background-image: url(". htmlspecialchars(substr($article["zdj_m"], 3)) .")'>";
-                  echo "<div class='content'>";
-                  echo "<div class='duze'>News</div>";
-                  echo "<p class='b'>".htmlspecialchars($article["tytul"])."</p>";
-                  echo "<p class='autor'>" . htmlspecialchars($article["autor"]) . "</p>";
                   echo "<form action='artykul.php' method='POST'>";
                   echo "<input type='hidden' name='article_id' value='". htmlspecialchars($article["id"]) ."'>";
-                  echo "<button type='submit' class='d'>ZOBACZ CAŁOŚĆ</button>";
+                  echo "<button type='submit' class='d'>";
+                  echo "<div class='large-box'>";
+                  echo "<div class='content'>";
+                  echo "<div class='duze'>Artykuł</div>";
+                  echo "<p class='b'>".htmlspecialchars($article["tytul"])."</p>";
+                  echo "<p class='autor'>" . htmlspecialchars($article["autor"]) . "</p>";
+                  echo "</div>";
+                  echo "<div class='a_img' style='background-image: url(". htmlspecialchars(substr($article["zdj_m"], 3)) .")'></div>";                 
+                  echo "</div>";
+                  echo "</button>";
                   echo "</form>";
-                  echo "</div>";
-                  echo "</div>";
                 }
             } else {
                 echo "Brak artykułów do wyświetlenia.";
