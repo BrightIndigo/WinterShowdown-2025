@@ -161,8 +161,8 @@
                   echo "<button type='submit' class='d'>";
                   echo "<div class='large-box'>";
                   echo "<div class='content'>";
-                  echo "<div class='duze'>Artykuł</div>";
-                  echo "<p class='b'>".htmlspecialchars($article["tytul"])."</p>";
+                  echo "<p class='czas'>" . htmlspecialchars($article["czas"]) . "</p>";
+                  echo "<p class='tytul'>".htmlspecialchars($article["tytul"])."</p>";
                   echo "<p class='autor'>" . htmlspecialchars($article["autor"]) . "</p>";
                   echo "</div>";
                   echo "<div class='a_img' style='background-image: url(". htmlspecialchars(substr($article["zdj_m"], 3)) .")'></div>";                 
