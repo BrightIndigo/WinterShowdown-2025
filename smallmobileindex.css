@@ -346,119 +346,31 @@ body {
   margin-right: 5vw;
 }
 
-.large-box {
-  flex: 2; /* Larger box occupies more space */
-  background-color: #5d1464;
-  background-size: cover; /* Ensure the image covers the entire container */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  color: white;
-  border-radius: 1rem;
-}
-.large-box .content {
-  height: 100%;
-  width: 80%;
+.container form {
+  width: 90vw;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: baseline;
-  padding-left: 10%;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  color: white;
-  gap: 3%;
+  align-items: center;
+  height: 85vw;
 }
 
-.large-box .content .a {
-  margin: 0 0 1vh;
-  padding: 1vh;
-  font-size: 80%;
-  background-color: #740c7e;
-  border-radius: 8px;
-  height: 3%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.large-box .content .b {
-  margin: 0 0 1vh;
-  padding: 0;
-  font-size: 140%;
-  text-wrap: wrap;
-}
-.large-box .content .c {
-  margin: 0 0 1vh;
-  padding: 0;
-  font-size: 80%;
-}
-.large-box .content .d {
-  margin-bottom: 0;
-  padding: 1vh;
-  font-size: 80%;
-  background-color: #740c7e;
-  border: none;
-  min-height: 6%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+form button {
   width: 100%;
 }
 
-.large-box .content button {
-  margin-bottom: 10%;
+.large-box .content {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
 }
 
 .a_img {
   width: 100%;
-  height: 30vh;
-  background-size: cover;
-  margin-bottom: 7vh;
+  height: 40vw;
+  margin-bottom: 10vw;
+  margin-top: 1em;
 }
 
-.small-container {
-  flex: 2; /* Smaller boxes fit into the remaining space */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
-  grid-gap: 1rem; /* Space between smaller boxes */
-}
-
-.small-box {
-  background-color: #dbdada;
-  height: 100%;
-  background-size: cover; /* Ensure the image covers the entire container */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  color: white;
-}
-
-.small-box .content {
-  height: 100%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 10%;
-  color: white;
-  text-wrap: wrap;
-}
-
-.small-box .content .duze {
-  text-wrap: wrap;
-  font-size: 120%;
-  margin-bottom: 4%;
-}
-.small-box .content .autor {
-  margin: 0;
-  padding: 0;
-  font-size: 80%;
-  margin-bottom: 10%;
-}
-/* 
-      vertical scroll list
-      */
 .scroll-container {
   width: 100%;
   max-width: 9vw;
