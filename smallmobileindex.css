@@ -161,6 +161,9 @@ body {
   align-items: center;
   flex-direction: column;
 }
+.separator2:nth-child(5) {
+  margin-bottom: 22vh;
+}
 #segment3 {
   margin-top: 6vh;
   display: flex;
@@ -340,7 +343,7 @@ body {
   margin-top: 6vh;
   display: flex;
   flex-direction: column;
-  gap: 16vh; /* Space between items */
+  gap: 45vh; /* Space between items */
   align-items: stretch;
   margin-left: 5vw;
   margin-right: 5vw;
@@ -356,6 +359,7 @@ body {
 
 form button {
   width: 100%;
+  border: none;
 }
 
 .large-box .content {
@@ -365,12 +369,14 @@ form button {
 }
 
 .a_img {
-  width: 85vw;
-  height: 60vw;
   margin-bottom: 10vw;
   margin-top: 1em;
-  background-size: cover;
-  
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 60vh;
 }
 
 .scroll-container {
